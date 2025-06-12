@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Excellence Academy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Business Excellence Academy</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#courses" class="nav-link">Courses</a>
+                <a href="#progress" class="nav-link">Progress</a>
+                <a href="#practice" class="nav-link">Practice</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    Master <span class="gradient-text">Business Excellence</span>
+                    <br>One Framework at a Time
+                </h1>
+                <p class="hero-subtitle">
+                    Transform your organization with 10 comprehensive courses covering Agile, Change Management, 
+                    Employee Engagement, and more. Interactive learning with practical applications.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('courses')">
+                        <i class="fas fa-rocket"></i>
+                        Start Learning
+                    </button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('progress')">
+                        <i class="fas fa-chart-line"></i>
+                        View Progress
+                    </button>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">10</div>
+                    <div class="stat-label">Expert Courses</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="completion-rate">0%</div>
+                    <div class="stat-label">Completed</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="time-spent">0h</div>
+                    <div class="stat-label">Time Spent</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="courses-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Choose Your Learning Path</h2>
+                <p class="section-subtitle">Each course is carefully crafted from expert materials with interactive elements</p>
+            </div>
+            
+            <div class="courses-grid" id="courses-grid">
+                <!-- Course cards will be dynamically generated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress Section -->
+    <section id="progress" class="progress-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Your Learning Journey</h2>
+                <p class="section-subtitle">Track your progress across all business management frameworks</p>
+            </div>
+            
+            <div class="progress-dashboard">
+                <div class="progress-overview">
+                    <div class="progress-card">
+                        <h3>Overall Progress</h3>
+                        <div class="circular-progress">
+                            <svg class="progress-ring" width="120" height="120">
+                                <circle class="progress-ring-circle" stroke="#e2e8f0" stroke-width="8" fill="transparent" r="52" cx="60" cy="60"/>
+                                <circle class="progress-ring-progress" stroke="#3b82f6" stroke-width="8" fill="transparent" r="52" cx="60" cy="60" id="overall-progress-circle"/>
+                            </svg>
+                            <div class="progress-text" id="overall-progress-text">0%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-trophy"></i>
+                            <div>
+                                <span class="stat-value" id="completed-courses">0</span>
+                                <span class="stat-label">Courses Completed</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-fire"></i>
+                            <div>
+                                <span class="stat-value" id="streak-days">0</span>
+                                <span class="stat-label">Day Streak</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-medal"></i>
+                            <div>
+                                <span class="stat-value" id="badges-earned">0</span>
+                                <span class="stat-label">Badges Earned</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="course-progress-list" id="course-progress-list">
+                    <!-- Progress bars for each course will be generated here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practice Section -->
+    <section id="practice" class="practice-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Practice & Apply</h2>
+                <p class="section-subtitle">Reinforce your learning with interactive exercises and assessments</p>
+            </div>
+            
+            <div class="practice-grid">
+                <div class="practice-card" onclick="openQuizModal()">
+                    <div class="practice-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Quick Quiz</h3>
+                    <p>Test your knowledge with random questions from all courses</p>
+                    <button class="btn btn-outline">Start Quiz</button>
+                </div>
+                
+                <div class="practice-card" onclick="openFlashcardsModal()">
+                    <div class="practice-icon">
+                        <i class="fas fa-cards-blank"></i>
+                    </div>
+                    <h3>Flashcards</h3>
+                    <p>Review key concepts and terminology with interactive flashcards</p>
+                    <button class="btn btn-outline">Study Cards</button>
+                </div>
+                
+                <div class="practice-card" onclick="openScenarioModal()">
+                    <div class="practice-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3>Scenarios</h3>
+                    <p>Apply your knowledge to real-world business situations</p>
+                    <button class="btn btn-outline">Solve Cases</button>
+                </div>
+                
+                <div class="practice-card" onclick="openAssessmentModal()">
+                    <div class="practice-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Assessment</h3>
+                    <p>Comprehensive evaluation of your business management skills</p>
+                    <button class="btn btn-outline">Take Assessment</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Modal -->
+    <div id="course-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-course-title"></h2>
+                <span class="close" onclick="closeCourseModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="course-sidebar">
+                    <div class="course-progress-info">
+                        <div class="progress-circle">
+                            <svg width="60" height="60">
+                                <circle cx="30" cy="30" r="25" stroke="#e2e8f0" stroke-width="4" fill="none"/>
+                                <circle cx="30" cy="30" r="25" stroke="#3b82f6" stroke-width="4" fill="none" 
+                                        id="modal-progress-circle" stroke-dasharray="157" stroke-dashoffset="157"/>
+                            </svg>
+                            <span id="modal-progress-percent">0%</span>
+                        </div>
+                        <p id="modal-progress-text">Start your journey</p>
+                    </div>
+                    <div class="course-navigation" id="course-navigation">
+                        <!-- Navigation will be generated dynamically -->
+                    </div>
+                </div>
+                <div class="course-content">
+                    <div id="course-content-area">
+                        <!-- Course content will be loaded here -->
+                    </div>
+                    <div class="course-controls">
+                        <button class="btn btn-secondary" id="prev-lesson" onclick="previousLesson()" disabled>
+                            <i class="fas fa-chevron-left"></i> Previous
+                        </button>
+                        <button class="btn btn-primary" id="next-lesson" onclick="nextLesson()">
+                            Next <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Modal -->
+    <div id="quiz-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Quick Quiz</h2>
+                <span class="close" onclick="closeQuizModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="quiz-content">
+                    <!-- Quiz content will be generated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Flashcards Modal -->
+    <div id="flashcards-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Flashcards</h2>
+                <span class="close" onclick="closeFlashcardsModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="flashcard-container">
+                    <!-- Flashcard will be generated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scenario Modal -->
+    <div id="scenario-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Business Scenarios</h2>
+                <span class="close" onclick="closeScenarioModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="scenario-content">
+                    <!-- Scenario content will be generated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Assessment Modal -->
+    <div id="assessment-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Comprehensive Assessment</h2>
+                <span class="close" onclick="closeAssessmentModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="assessment-content">
+                    <!-- Assessment content will be generated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Achievement Toast -->
+    <div id="achievement-toast" class="achievement-toast">
+        <div class="achievement-content">
+            <i class="fas fa-trophy"></i>
+            <div>
+                <strong>Achievement Unlocked!</strong>
+                <p id="achievement-text"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
